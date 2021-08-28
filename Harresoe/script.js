@@ -122,7 +122,7 @@
     const button = document.createElement("button");
     button.id = buttonId;
     button.innerText = "Filter for my sizes (0 removed)";
-    button.style.backgroundColor = "#957DAD";
+    button.style.backgroundColor = "#484744";
     button.style.border = "none";
     button.style.color = "white";
     button.style.textAlign = "center";

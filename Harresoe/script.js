@@ -13,7 +13,7 @@
     'use strict';
 
     const clothingSelector = "#collection-product-repeat .col-sm-4";
-    const buttonId = "filterButton";
+    const filterLabelId = "filterLabel";
     const fieldsetId = "sizeInput";
     
     const availableSizes = new Set();
@@ -60,8 +60,8 @@
             }
         }
 
-        const button = document.getElementById(buttonId);
-        button.innerText = "Filter for my sizes ("+ numberOfRemovedItems +" removed)";
+        const filterLabel = document.getElementById(filterLabelId);
+        filterLabel.innerText = "Size filter ("+ numberOfRemovedItems +" items removed)";
     };
 
     const extractAvailableSizes = function() {
@@ -107,6 +107,7 @@
         checkbox.type = "checkbox";
         checkbox.id = element;
         checkbox.value = element;
+        checkbox.onchange = filterSizes;
     
         const smallCheckboxLabel = document.createElement("label");
         smallCheckboxLabel.htmlFor = element;
@@ -119,21 +120,19 @@
     clothingContainer.prepend(stringSizeFieldset);
 
     // Adding filter button UI element
-    const button = document.createElement("button");
-    button.id = buttonId;
-    button.innerText = "Filter for my sizes (0 removed)";
-    button.style.backgroundColor = "#484744";
-    button.style.border = "none";
-    button.style.color = "white";
-    button.style.textAlign = "center";
-    button.style.textDecoration = "none";
-    button.style.fontSize = "20px";
-    button.style.display = "inline-block";
-    button.style.marginBottom = "20px";
-    button.style.padding = "15px";
-    button.style.width = "350px";
-    button.style.borderRadius = "30px";
-    button.onclick = filterSizes;
+    const filteringLabel = document.createElement("label");
+    filteringLabel.id = filterLabelId;
+    filteringLabel.innerText = "Size filter (0 items removed)";
+    filteringLabel.style.backgroundColor = "#484744";
+    filteringLabel.style.border = "none";
+    filteringLabel.style.color = "white";
+    filteringLabel.style.textAlign = "center";
+    filteringLabel.style.textDecoration = "none";
+    filteringLabel.style.fontSize = "18px";
+    filteringLabel.style.display = "inline-block";
+    filteringLabel.style.marginBottom = "20px";
+    filteringLabel.style.padding = "10px";
+    filteringLabel.style.width = "350px";
 
-    clothingContainer.prepend(button);
+    clothingContainer.prepend(filteringLabel);
 })();
